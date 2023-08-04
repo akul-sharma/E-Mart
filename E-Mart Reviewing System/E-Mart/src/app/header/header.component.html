@@ -1,0 +1,16 @@
+<nav class="navbar bg-dark">
+    <div class="container-fluid">
+      <div *ngIf="!loggedIn" class="d-flex">
+        <a  class="navbar-brand" href="#" routerLink="">Home</a>
+        <a  class="navbar-brand" href="#" routerLink="Login">Login</a>
+        <a  class="navbar-brand" href="#" routerLink="Register">Register</a>       
+      </div>
+      <div *ngIf="loggedIn" class="d-flex justify-content-between">
+          <a  class="navbar-brand" href="#" routerLink="Login"><img height="30px" width="30px"class="mx-3" src="https://freesvg.org/img/abstract-user-flat-4.png">Welcome {{welcomeName}}</a>
+          <a  style="margin-left: 860px; margin-right:30px;" class="navbar-brand" href="#" (click)="logoutUser()">Logout</a>
+        </div>
+              
+      </div>
+</nav>
+
+

@@ -1,0 +1,44 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-50">
+    <div class="row d-flex justify-content-center align-items-center h-50">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-4 text-center">
+
+            <div class="mb-md-4 mt-md-2 ">
+
+              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+              <p class="text-white-50 mb-4">Please enter your login and password!</p>
+              <div *ngIf="invalid" style="color:red" class="mb-2">
+                  Invalid Credentials
+              </div>
+
+            <form [formGroup]="formValue">
+
+              <div class="form-outline form-white mb-4">
+                <input type="email" id="typeEmailX" formControlName="email" class="form-control form-control-lg" />
+                <label class="form-label" for="typeEmailX">Email</label>
+                <div style="color: red;" *ngIf="formValue.controls['email'].dirty && formValue.hasError('required','email')">Email is empty</div>
+                <div style="color: red;" *ngIf="formValue.controls['email'].dirty && formValue.hasError('email','email')">Invalid Email</div>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <input type="password" id="typePasswordX" formControlName="password" class="form-control form-control-lg" />
+                <label class="form-label" for="typePasswordX">Password</label>
+                <div  style="color: red;" *ngIf="formValue.controls['password'].dirty && formValue.hasError('required','password')">Password is empty</div>
+              </div>
+
+            </form>
+
+              <button [disabled]="!formValue.valid" class="btn btn-outline-light btn-lg px-5" type="submit" (click)="login()" >Login</button>
+
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

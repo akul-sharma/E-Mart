@@ -1,0 +1,89 @@
+<section class="" style="background-color: #eee;">
+    <div class="container ">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+  
+                  <p class="text-center h1 fw-bold mb-4 mx-1 mx-md-4 mt-sm-4">Sign up</p>
+  
+                  <form class="mx-1 mx-md-4" [formGroup]="formValue">
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <img height="30px" width="30px" class="mx-2" src="https://freesvg.org/img/abstract-user-flat-4.png">
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="firstName" class="form-control" formControlName="firstName" placeholder="Your FirstName" />
+                        <div style="color: red;" *ngIf="formValue.controls['firstName'].touched && formValue.controls['firstName'].dirty && formValue.hasError('required','firstName')">FirstName is required</div>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <img height="30px" width="30px" class="mx-2" src="https://freesvg.org/img/abstract-user-flat-4.png">
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="text" id="lastName" class="form-control" formControlName="lastName" placeholder="Your LastName" />
+                        <div style="color: red;" *ngIf="formValue.controls['lastName'].dirty && formValue.hasError('required','lastName')">LastName is required</div>
+                      </div>
+                    </div>
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <img height="30px" width="30px" class="mx-2" src="https://cdn-icons-png.flaticon.com/512/561/561188.png">
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="email" id="form3Example3c" class="form-control" formControlName="email" placeholder="Your Email" />
+                        <div style="color: red;" *ngIf="formValue.controls['email'].dirty && formValue.hasError('required','email')">Email is required</div>
+                        <div style="color: red;" *ngIf="formValue.controls['email'].dirty && formValue.hasError('email','email')">Invalid Email</div>
+                      </div>
+                    </div>
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <img height="30px" width="30px" class="mx-2" src="https://www.nicepng.com/png/detail/207-2073115_font-password-comments-password-icon-png-transparent.png">
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="password" id="password" class="form-control" formControlName="password" placeholder="Password" />
+                        <div style="color: red;" *ngIf="formValue.controls['password'].dirty && formValue.hasError('required','password')">Password is required</div>
+                        <div style="color: red;" *ngIf="formValue.controls['password'].dirty && formValue.hasError('minlength','password')">Min length is 5</div>
+                        <div style="color: red;" *ngIf="formValue.controls['password'].dirty && formValue.hasError('maxlength','password')">Max length is 10</div>
+                      </div>
+                    </div>
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <img height="30px" width="30px" class="mx-2" src="data:image/png;base64,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">
+                      <div class="form-outline flex-fill mb-0">
+                        <input type="password" id="checkPassword" class="form-control" formControlName="checkPassword" placeholder="Confirm Password" />
+                        <div style="color: red;" *ngIf="formValue.controls['checkPassword'].dirty && formValue.hasError('required','checkPassword')">Confirm Password is required</div>
+                        <div style="color:red" *ngIf="f['checkPassword'].errors && f['checkPassword'].errors['confirmedValidator']">Password does not match</div>
+                      </div>
+                    </div>
+  
+                    <div class="d-flex justify-content-center mx-4 mb-lg-4">
+                      <button [disabled]="!formValue.valid" type="button" class="btn btn-primary btn-lg btn-dark" (click)="postUser()" >Register</button>
+                    </div>
+  
+                  </form>
+  
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+  
+                  <img src="https://cdn-images.himalayas.app/t850au6smjni0xg4l325idsg5ta4"
+                    class="img-fluid mx-md-5" alt="Sample image" style="padding-left:20%;">
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!--<form [formGroup]="formValue">
+    <label for="email">Email</label>
+    <input type="email" name="email" formControlName="email">
+    <label for="firstName">FirstName</label>
+    <input type="text" name="firstName" formControlName="firstName">
+    <label for="lastName">LastName</label>
+    <input type="text" name="lastName" formControlName="lastName">
+    <label for="password">Password</label>
+    <input type="password" name="password" formControlName="password">
+</form> -->

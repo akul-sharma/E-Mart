@@ -1,0 +1,63 @@
+<section class="search-sec mt-3">
+    <div class="container">
+        <form [formGroup]="formValue">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <input type="number" placeholder="Enter Product Code"  class="form-control search-slt" id="code" formControlName="code">        
+                        </div>
+                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <input type="text" placeholder="Enter Product Name"  class="form-control search-slt" id="productName" formControlName="productName">
+                        </div>
+                          <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <input type="text" placeholder="Enter Product Brand"  class="form-control search-slt" id="productBrand" formControlName="brand">
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <button type="button" class="btn btn-primary wrn-btn"  (click)="onSubmit()">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<div ><button class="btn btn-primary mt-2 mx-3" style="float:right" routerLink="RaiseRequest">Request Review</button></div>
+<div *ngIf="searchedProducts.length!=0 && !notFound">
+    <div *ngFor="let product of searchedProducts">
+        <div class="container mt-5 mb-5">
+            <div class="d-flex justify-content-center row">
+                <div class="col-md-10">
+                    <div class="row p-2 bg-white border rounded">
+                        <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src={{product.imageLink}}></div>
+                        <div class="col-md-6 mt-4">
+                            <h5>{{product.productName}}</h5>
+                            <span class="dot"></span><span>Product Code {{product.code}}</span><br>
+                            <span class="dot"></span><span>{{product.brand}}</span></div>
+                        <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                            <div class="d-flex flex-row align-items-center">
+                                <h4 class="mr-1">Rs. {{product.price}}</h4><span class="strike-text mx-2">{{product.price + (product.price*0.10)}}</span>
+                            </div>
+                            <h6 class="text-success">Free shipping</h6>
+                            <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" routerLink="PostReview" (click)="sendCode(product.code)" type="button">Post Review</button><button class="btn btn-outline-primary btn-sm mt-2" (click)="getAllReviews(product.code)" type="button">Reviews</button></div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> 
+
+<div *ngIf="notFound">
+  <section>
+    <img height="400px" width="500px"  style="margin-left: 30%;" src="https://harinafoods.com/assets/images/product_not_found2.png">
+  </section>  
+</div>
+
+<div *ngIf="!notFound && searchedProducts.length==0">
+  <img height="300px" class="mt-5" style="margin-left:35%;" src="https://thumbs.dreamstime.com/b/monster-magnifying-glass-illustration-fairy-shaggy-blue-52509428.jpg">
+</div>
+<router-outlet></router-outlet>
+
